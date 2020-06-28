@@ -13,30 +13,30 @@ using Unity;
 
 namespace View
 {
-    public partial class FormOsn : Form
+    public partial class FormOsnv : Form
     {
         [Dependency]
         public new IUnityContainer Container { get; set; }
 
         public int Id { set { id = value; } }
 
-        private readonly IOsn Osn;
+        private readonly IOsnv Osnv;
 
         private int? id;
 
-        public FormOsn(IOsn Osn)
+        public FormOsnv(IOsnv Osnv)
         {
             InitializeComponent();
-            this.Osn = Osn;
+            this.Osnv = Osnv;
         }
 
-        private void FormOsn_Load(object sender, EventArgs e)
+        private void FormOsnv_Load(object sender, EventArgs e)
         {
             if (id.HasValue)
             {
                 try
                 {
-                    var view = Osn.Read(new OsnBindingModel { Id = id })?[0];
+                    var view = Osnv.Read(new OsnvBindingModel { Id = id })?[0];
                     if (view != null)
                     {
                         textBoxTitle.Text = view.Name;
@@ -72,7 +72,7 @@ namespace View
             }
             try
             {
-                Osn.CreateOrUpdate(new OsnBindingModel
+                Osnv.CreateOrUpdate(new OsnvBindingModel
                 {
                     Id = id,
                     Name = textBoxTitle.Text,

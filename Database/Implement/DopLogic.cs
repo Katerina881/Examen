@@ -39,7 +39,7 @@ namespace Database.Implement
                 element.DataCreateDop = model.DataCreateDop;
                 element.Count = model.Count;
                 element.Place = model.Place;
-                element.OsnId = model.OsnId;
+                element.OsnvId = model.OsnvId;
                 context.SaveChanges();
             }
         }
@@ -65,17 +65,17 @@ namespace Database.Implement
             using (var context = new Database())
             {
                 return context.Dops
-                .Where(rec => model == null || rec.Id == model.Id || (model.DateFrom.HasValue && model.DateTo.HasValue && rec.Osn.DateCreate >= model.DateFrom && rec.Osn.DateCreate <= model.DateTo))
+                .Where(rec => model == null || rec.Id == model.Id || (model.DateFrom.HasValue && model.DateTo.HasValue && rec.Osnv.DateCreate >= model.DateFrom && rec.Osnv.DateCreate <= model.DateTo))
                 .Select(rec => new DopViewModel
                 {
                     Id = rec.Id,
-                    OsnId = rec.OsnId,
+                    OsnvId = rec.OsnvId,
                     DopName = rec.DopName,
                     Count = rec.Count,
                     DataCreateDop = rec.DataCreateDop,
                     Place = rec.Place,
-                    Name = rec.Osn.Name,
-                    DateCreate = rec.Osn.DateCreate
+                    Name = rec.Osnv.Name,
+                    DateCreate = rec.Osnv.DateCreate
                 })
                 .ToList();
             }

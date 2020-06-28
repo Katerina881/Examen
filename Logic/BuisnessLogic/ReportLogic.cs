@@ -10,11 +10,11 @@ namespace Logic.BuisnessLogic
 {
     public class ReportLogic
     {
-        private readonly IOsn Osn;
+        private readonly IOsnv Osnv;
         private readonly IDop Dop;
-        public ReportLogic(IOsn Osn, IDop Dop)
+        public ReportLogic(IOsnv Osnv, IDop Dop)
         {
-            this.Osn = Osn;
+            this.Osnv = Osnv;
             this.Dop = Dop;
         }
         public List<DopViewModel> GetDops(ReportBindingModel model)

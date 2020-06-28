@@ -12,7 +12,7 @@ namespace Logic.BindingModel
         public int? Id { get; set; }
 
         [DataMember]
-        public int OsnId { get; set; }
+        public int OsnvId { get; set; }
 
         [DataMember]
         public string DopName { get; set; }

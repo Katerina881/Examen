@@ -14,23 +14,23 @@ using Unity;
 
 namespace View
 {
-    public partial class FormOsns : Form
+    public partial class FormOsnvs : Form
     {
         [Dependency]
         public new IUnityContainer Container { get; set; }
 
-        private readonly IOsn Osn;
+        private readonly IOsnv Osnv;
 
         private readonly BackUpAbstractLogic backUpAbstractLogic;
 
-        public FormOsns(IOsn Osn, BackUpAbstractLogic backUpAbstractLogic)
+        public FormOsnvs(IOsnv Osnv, BackUpAbstractLogic backUpAbstractLogic)
         {
             InitializeComponent();
-            this.Osn = Osn;
+            this.Osnv = Osnv;
             this.backUpAbstractLogic = backUpAbstractLogic;
         }
 
-        private void FormOsns_Load(object sender, EventArgs e)
+        private void FormOsnvs_Load(object sender, EventArgs e)
         {
             LoadData();
         }
@@ -39,7 +39,7 @@ namespace View
         {
             try
             {
-                var list = Osn.Read(null);
+                var list = Osnv.Read(null);
                 if (list != null)
                 {
                     dataGridView.DataSource = list;
@@ -54,7 +54,7 @@ namespace View
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-            var form = Container.Resolve<FormOsn>();
+            var form = Container.Resolve<FormOsnv>();
             if (form.ShowDialog() == DialogResult.OK)
             {
                 LoadData();
@@ -65,7 +65,7 @@ namespace View
         {
             if (dataGridView.SelectedRows.Count == 1)
             {
-                var form = Container.Resolve<FormOsn>();
+                var form = Container.Resolve<FormOsnv>();
                 form.Id = Convert.ToInt32(dataGridView.SelectedRows[0].Cells[0].Value);
                 if (form.ShowDialog() == DialogResult.OK)
                 {
@@ -83,7 +83,7 @@ namespace View
                     int id = Convert.ToInt32(dataGridView.SelectedRows[0].Cells[0].Value);
                     try
                     {
-                        Osn.Delete(new OsnBindingModel { Id = id });
+                        Osnv.Delete(new OsnvBindingModel { Id = id });
                     }
                     catch (Exception ex)
                     {

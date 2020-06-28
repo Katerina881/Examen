@@ -9,13 +9,13 @@ using System.Text;
 
 namespace Database.Implement
 {
-    public class OsnLogic : IOsn
+    public class OsnvLogic : IOsnv
     {
-        public void CreateOrUpdate(OsnBindingModel model)
+        public void CreateOrUpdate(OsnvBindingModel model)
         {
             using (var context = new Database())
             {
-                Osn element = context.Osns.FirstOrDefault(rec => rec.Name == model.Name && rec.Id != model.Id);
+                Osnv element = context.Osnvs.FirstOrDefault(rec => rec.Name == model.Name && rec.Id != model.Id);
                 if (element != null)
                 {
                     //название
@@ -23,7 +23,7 @@ namespace Database.Implement
                 }
                 if (model.Id.HasValue)
                 {
-                    element = context.Osns.FirstOrDefault(rec => rec.Id == model.Id);
+                    element = context.Osnvs.FirstOrDefault(rec => rec.Id == model.Id);
                     if (element == null)
                     {
                         throw new Exception("Элемент не найден");
@@ -31,8 +31,8 @@ namespace Database.Implement
                 }
                 else
                 {
-                    element = new Osn();
-                    context.Osns.Add(element);
+                    element = new Osnv();
+                    context.Osnvs.Add(element);
                 }
                 element.Name = model.Name;
                 element.Type = model.Type;
@@ -40,15 +40,15 @@ namespace Database.Implement
                 context.SaveChanges();
             }
         }
-        public void Delete(OsnBindingModel model)
+        public void Delete(OsnvBindingModel model)
         {
             using (var context = new Database())
             {
-                Osn element = context.Osns.FirstOrDefault(rec => rec.Id ==
+                Osnv element = context.Osnvs.FirstOrDefault(rec => rec.Id ==
                model.Id);
                 if (element != null)
                 {
-                    context.Osns.Remove(element);
+                    context.Osnvs.Remove(element);
                     context.SaveChanges();
                 }
                 else
@@ -57,13 +57,13 @@ namespace Database.Implement
                 }
             }
         }
-        public List<OsnViewModel> Read(OsnBindingModel model)
+        public List<OsnvViewModel> Read(OsnvBindingModel model)
         {
             using (var context = new Database())
             {
-                return context.Osns
+                return context.Osnvs
                 .Where(rec => model == null || rec.Id == model.Id)
-                .Select(rec => new OsnViewModel
+                .Select(rec => new OsnvViewModel
                 {
                     Id = rec.Id,
                     Name = rec.Name,

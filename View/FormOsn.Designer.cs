@@ -1,6 +1,6 @@
 ﻿namespace View
 {
-    partial class FormOsn
+    partial class FormOsnv
     {
         /// <summary>
         /// Required designer variable.
@@ -112,7 +112,7 @@
             this.buttonCancel.Text = "Отмена";
             this.buttonCancel.UseVisualStyleBackColor = true;
             // 
-            // FormOsn
+            // FormOsnv
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -125,8 +125,8 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.textBoxTitle);
             this.Controls.Add(this.label1);
-            this.Name = "FormOsn";
-            this.Text = "FormOsn";
+            this.Name = "FormOsnv";
+            this.Text = "FormOsnv";
             this.ResumeLayout(false);
             this.PerformLayout();
 

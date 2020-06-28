@@ -13,7 +13,7 @@ namespace Logic.ViewModel
         public int Id { get; set; }
 
         [DataMember]
-        public int OsnId { get; set; }
+        public int OsnvId { get; set; }
 
         [DataMember]
         [DisplayName("Название")]

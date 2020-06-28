@@ -1,6 +1,6 @@
 ﻿namespace View
 {
-    partial class FormOsns
+    partial class FormOsnvs
     {
         /// <summary>
         /// Required designer variable.
@@ -124,7 +124,7 @@
             this.сохранитьФайлToolStripMenuItem.Text = "сохранить файл";
             this.сохранитьФайлToolStripMenuItem.Click += new System.EventHandler(this.сохранитьФайлToolStripMenuItem_Click);
             // 
-            // FormOsns
+            // FormOsnvs
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -136,8 +136,8 @@
             this.Controls.Add(this.dataGridView);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.Name = "FormOsns";
-            this.Text = "FormOsns";
+            this.Name = "FormOsnvs";
+            this.Text = "FormOsnvs";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();

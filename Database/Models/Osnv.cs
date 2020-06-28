@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Database.Models
 {
-    public class Osn
+    public class Osnv
     {
         public int Id { get; set; }
 

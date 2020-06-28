@@ -14,7 +14,7 @@ namespace Database
             }
             base.OnConfiguring(optionsBuilder);
         }
-        public virtual DbSet<Osn> Osns { set; get; }
+        public virtual DbSet<Osnv> Osnvs { set; get; }
         public virtual DbSet<Dop> Dops { set; get; }
     }
 }

@@ -9,7 +9,7 @@ namespace Database.Models
     {
         public int Id { get; set; }
 
-        public int OsnId { get; set; }
+        public int OsnvId { get; set; }
 
         [Required]
         public string DopName { get; set; }
@@ -23,6 +23,6 @@ namespace Database.Models
         [Required]
         public string Place { get; set; }
 
-        public virtual Osn Osn { get; set; }
+        public virtual Osnv Osnv { get; set; }
     }
 }

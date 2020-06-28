@@ -22,20 +22,20 @@ namespace View
 
         private readonly IDop Dop;
 
-        private readonly IOsn Osn;
+        private readonly IOsnv Osnv;
 
         private int? id;
 
-        public FormDop(IDop service, IOsn OsnService)
+        public FormDop(IDop service, IOsnv OsnvService)
         {
             InitializeComponent();
             this.Dop = service;
-            this.Osn = OsnService;
+            this.Osnv = OsnvService;
         }
 
         private void FormDop_Load(object sender, EventArgs e)
         {
-            var list = Osn.Read(null);
+            var list = Osnv.Read(null);
             if (list != null)
             {
                 comboBox1.DataSource = list;
@@ -93,7 +93,7 @@ namespace View
                     Count = Convert.ToInt32(textBoxCount.Text),
                     Place = textBoxJob.Text,
                     DataCreateDop = dateTimePicker1.Value,
-                    OsnId = Convert.ToInt32(comboBox1.SelectedValue)
+                    OsnvId = Convert.ToInt32(comboBox1.SelectedValue)
                 });
                 MessageBox.Show("Сохранение прошло успешно", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 DialogResult = DialogResult.OK;
