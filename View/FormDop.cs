@@ -7,6 +7,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Unity;
@@ -80,8 +81,26 @@ namespace View
             }
             if (comboBox1.SelectedValue == null)
             {
-                //nas
+                
                 MessageBox.Show("Выберите блюдо", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (Regex.IsMatch(textBoxFullName.Text, @"^[а-яА-Я]+$"))
+            {
+                MessageBox.Show("В названии могут быть только буквы", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (Regex.IsMatch(textBoxCount.Text, @"^[0-9]+$"))
+            {
+                MessageBox.Show("В количестве могут быть только цифры", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (Regex.IsMatch(textBoxJob.Text, @"^[а-яА-Я]+$"))
+            {
+                MessageBox.Show("В месте изготовления могут быть только буквы", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             try

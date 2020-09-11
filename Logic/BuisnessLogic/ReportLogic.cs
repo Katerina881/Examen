@@ -5,6 +5,7 @@ using Logic.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Logic.BuisnessLogic
 {
@@ -39,15 +40,19 @@ namespace Logic.BuisnessLogic
             }
             return list;
         }
-        public void SaveDopsToPdfFile(ReportBindingModel model)
+        public async void SaveDopsToPdfFile(ReportBindingModel model)
         {
             //названия
             string title = "Блюда и их продукты";
-            SaveToPdf.CreateDoc(new PdfInfo
+
+            await Task.Run(() =>
             {
-                FileName = model.FileName,
-                Title = title,
-                Dops = GetDops(model),
+                SaveToPdf.CreateDoc(new PdfInfo
+                {
+                    FileName = model.FileName,
+                    Title = title,
+                    Dops = GetDops(model),
+                });
             });
         }
     }

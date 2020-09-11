@@ -7,6 +7,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Unity;
@@ -68,6 +69,18 @@ namespace View
             {
                 //nas
                 MessageBox.Show("Заполните вид блюда", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (Regex.IsMatch(textBoxTitle.Text, @"^[а-яА-Я]+$"))
+            {
+                MessageBox.Show("В названии могут быть только буквы", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (Regex.IsMatch(textBoxSubject.Text, @"^[а-яА-Я]+$"))
+            {
+                MessageBox.Show("В виде блюда могут быть только буквы", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             try
