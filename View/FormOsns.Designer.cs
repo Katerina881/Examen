@@ -31,12 +31,12 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.изделиеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.отчетыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.сохранитьФайлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dataGridView = new System.Windows.Forms.DataGridView();
             this.buttonAdd = new System.Windows.Forms.Button();
             this.buttonCh = new System.Windows.Forms.Button();
             this.buttonDel = new System.Windows.Forms.Button();
             this.buttonUpd = new System.Windows.Forms.Button();
-            this.сохранитьФайлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
@@ -58,12 +58,21 @@
             this.изделиеToolStripMenuItem.Name = "изделиеToolStripMenuItem";
             this.изделиеToolStripMenuItem.Size = new System.Drawing.Size(63, 20);
             this.изделиеToolStripMenuItem.Text = "изделие";
+            this.изделиеToolStripMenuItem.Click += new System.EventHandler(this.продуктыToolStripMenuItem_Click);
             // 
             // отчетыToolStripMenuItem
             // 
             this.отчетыToolStripMenuItem.Name = "отчетыToolStripMenuItem";
             this.отчетыToolStripMenuItem.Size = new System.Drawing.Size(58, 20);
             this.отчетыToolStripMenuItem.Text = "отчеты";
+            this.отчетыToolStripMenuItem.Click += new System.EventHandler(this.отчетыToolStripMenuItem_Click);
+            // 
+            // сохранитьФайлToolStripMenuItem
+            // 
+            this.сохранитьФайлToolStripMenuItem.Name = "сохранитьФайлToolStripMenuItem";
+            this.сохранитьФайлToolStripMenuItem.Size = new System.Drawing.Size(107, 20);
+            this.сохранитьФайлToolStripMenuItem.Text = "сохранить файл";
+            this.сохранитьФайлToolStripMenuItem.Click += new System.EventHandler(this.сохранитьФайлToolStripMenuItem_Click);
             // 
             // dataGridView
             // 
@@ -86,6 +95,7 @@
             this.buttonAdd.TabIndex = 2;
             this.buttonAdd.Text = "Добавить";
             this.buttonAdd.UseVisualStyleBackColor = true;
+            this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
             // 
             // buttonCh
             // 
@@ -96,6 +106,7 @@
             this.buttonCh.TabIndex = 3;
             this.buttonCh.Text = "Изменить";
             this.buttonCh.UseVisualStyleBackColor = true;
+            this.buttonCh.Click += new System.EventHandler(this.buttonCh_Click);
             // 
             // buttonDel
             // 
@@ -106,6 +117,7 @@
             this.buttonDel.TabIndex = 4;
             this.buttonDel.Text = "Удалить";
             this.buttonDel.UseVisualStyleBackColor = true;
+            this.buttonDel.Click += new System.EventHandler(this.buttonDel_Click);
             // 
             // buttonUpd
             // 
@@ -116,13 +128,7 @@
             this.buttonUpd.TabIndex = 5;
             this.buttonUpd.Text = "Обновить";
             this.buttonUpd.UseVisualStyleBackColor = true;
-            // 
-            // сохранитьФайлToolStripMenuItem
-            // 
-            this.сохранитьФайлToolStripMenuItem.Name = "сохранитьФайлToolStripMenuItem";
-            this.сохранитьФайлToolStripMenuItem.Size = new System.Drawing.Size(108, 20);
-            this.сохранитьФайлToolStripMenuItem.Text = "сохранить файл";
-            this.сохранитьФайлToolStripMenuItem.Click += new System.EventHandler(this.сохранитьФайлToolStripMenuItem_Click);
+            this.buttonUpd.Click += new System.EventHandler(this.buttonUpd_Click);
             // 
             // FormOsnvs
             // 
@@ -138,6 +144,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "FormOsnvs";
             this.Text = "FormOsnvs";
+            this.Load += new System.EventHandler(this.FormOsnvs_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();

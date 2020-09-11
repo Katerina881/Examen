@@ -57,6 +57,7 @@
             this.buttonAdd.TabIndex = 7;
             this.buttonAdd.Text = "Добавить";
             this.buttonAdd.UseVisualStyleBackColor = true;
+            this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
             // 
             // buttonCh
             // 
@@ -67,6 +68,7 @@
             this.buttonCh.TabIndex = 8;
             this.buttonCh.Text = "Изменить";
             this.buttonCh.UseVisualStyleBackColor = true;
+            this.buttonCh.Click += new System.EventHandler(this.buttonCh_Click);
             // 
             // buttonDel
             // 
@@ -77,6 +79,7 @@
             this.buttonDel.TabIndex = 9;
             this.buttonDel.Text = "Удалить";
             this.buttonDel.UseVisualStyleBackColor = true;
+            this.buttonDel.Click += new System.EventHandler(this.buttonDel_Click);
             // 
             // buttonUpd
             // 
@@ -87,6 +90,7 @@
             this.buttonUpd.TabIndex = 10;
             this.buttonUpd.Text = "Обновить";
             this.buttonUpd.UseVisualStyleBackColor = true;
+            this.buttonUpd.Click += new System.EventHandler(this.buttonUpd_Click);
             // 
             // FormDops
             // 
@@ -100,6 +104,7 @@
             this.Controls.Add(this.dataGridView1);
             this.Name = "FormDops";
             this.Text = "FormDops";
+            this.Load += new System.EventHandler(this.FormDops_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 

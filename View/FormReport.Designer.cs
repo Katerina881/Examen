@@ -60,6 +60,7 @@
             this.button1.TabIndex = 7;
             this.button1.Text = "Сформировать ";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // buttonSave
             // 
@@ -70,9 +71,11 @@
             this.buttonSave.TabIndex = 8;
             this.buttonSave.Text = "Сохранить ";
             this.buttonSave.UseVisualStyleBackColor = true;
+            this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
             // reportViewer
             // 
+            this.reportViewer.LocalReport.ReportEmbeddedResource = "View.Report.rdlc";
             this.reportViewer.Location = new System.Drawing.Point(11, 50);
             this.reportViewer.Name = "reportViewer";
             this.reportViewer.ServerReport.BearerToken = null;

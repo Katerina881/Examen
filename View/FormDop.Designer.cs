@@ -142,6 +142,7 @@
             this.buttonSave.TabIndex = 15;
             this.buttonSave.Text = "Сохранить";
             this.buttonSave.UseVisualStyleBackColor = true;
+            this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
             // buttonCancel
             // 
@@ -152,6 +153,7 @@
             this.buttonCancel.TabIndex = 16;
             this.buttonCancel.Text = "Отмена";
             this.buttonCancel.UseVisualStyleBackColor = true;
+            this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
             // 
             // FormDop
             // 
@@ -172,6 +174,7 @@
             this.Controls.Add(this.label1);
             this.Name = "FormDop";
             this.Text = "FormDop";
+            this.Load += new System.EventHandler(this.FormDop_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

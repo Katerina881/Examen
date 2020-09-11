@@ -33,6 +33,8 @@ namespace View
             }
             try
             {
+                ReportParameter parameter = new ReportParameter("ReportParameter1", " c " + dateTimePickerFrom.Value.ToShortDateString() + " по " + dateTimePickerTo.Value.ToShortDateString());
+                reportViewer.LocalReport.SetParameters(parameter);
                 var dataSource = logic.GetDops(new ReportBindingModel { DateFrom = dateTimePickerFrom.Value.Date, DateTo = dateTimePickerTo.Value.Date });
                 ReportDataSource source = new ReportDataSource("DataSet1", dataSource);
                 reportViewer.LocalReport.DataSources.Add(source);
