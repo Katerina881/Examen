@@ -86,19 +86,19 @@ namespace View
                 return;
             }
 
-            if (Regex.IsMatch(textBoxFullName.Text, @"^[а-яА-Я]+$"))
+            if (!Regex.IsMatch(textBoxFullName.Text, @"^[а-яА-Я]+$"))
             {
                 MessageBox.Show("В названии могут быть только буквы", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            if (Regex.IsMatch(textBoxCount.Text, @"^[0-9]+$"))
+            if (!Regex.IsMatch(textBoxCount.Text, @"^[0-9]+$"))
             {
                 MessageBox.Show("В количестве могут быть только цифры", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            if (Regex.IsMatch(textBoxJob.Text, @"^[а-яА-Я]+$"))
+            if (!Regex.IsMatch(textBoxJob.Text, @"^[а-яА-Я]+$"))
             {
                 MessageBox.Show("В месте изготовления могут быть только буквы", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
