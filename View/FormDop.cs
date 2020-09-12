@@ -92,7 +92,7 @@ namespace View
                 return;
             }
 
-            if (!Regex.IsMatch(textBoxCount.Text, @"^[0-9]+$"))
+            if (!Regex.IsMatch(textBoxCount.Text, @"^\d+$"))
             {
                 MessageBox.Show("В количестве могут быть только цифры", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
