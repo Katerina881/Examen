@@ -9,21 +9,21 @@ using System.Text;
 
 namespace Database.Implement
 {
-    public class OsnvLogic : IOsnv
+    public class BankLogic : IBank
     {
-        public void CreateOrUpdate(OsnvBindingModel model)
+        public void CreateOrUpdate(BankBindingModel model)
         {
             using (var context = new Database())
             {
-                Osnv element = context.Osnvs.FirstOrDefault(rec => rec.Name == model.Name && rec.Id != model.Id);
+                Bank element = context.Banks.FirstOrDefault(rec => rec.Name == model.Name && rec.Id != model.Id);
                 if (element != null)
                 {
                     //название
-                    throw new Exception("Уже есть блюдо с таким названием");
+                    throw new Exception("Уже есть банк с таким названием");
                 }
                 if (model.Id.HasValue)
                 {
-                    element = context.Osnvs.FirstOrDefault(rec => rec.Id == model.Id);
+                    element = context.Banks.FirstOrDefault(rec => rec.Id == model.Id);
                     if (element == null)
                     {
                         throw new Exception("Элемент не найден");
@@ -31,8 +31,8 @@ namespace Database.Implement
                 }
                 else
                 {
-                    element = new Osnv();
-                    context.Osnvs.Add(element);
+                    element = new Bank();
+                    context.Banks.Add(element);
                 }
                 element.Name = model.Name;
                 element.Type = model.Type;
@@ -40,15 +40,15 @@ namespace Database.Implement
                 context.SaveChanges();
             }
         }
-        public void Delete(OsnvBindingModel model)
+        public void Delete(BankBindingModel model)
         {
             using (var context = new Database())
             {
-                Osnv element = context.Osnvs.FirstOrDefault(rec => rec.Id ==
+                Bank element = context.Banks.FirstOrDefault(rec => rec.Id ==
                model.Id);
                 if (element != null)
                 {
-                    context.Osnvs.Remove(element);
+                    context.Banks.Remove(element);
                     context.SaveChanges();
                 }
                 else
@@ -57,13 +57,13 @@ namespace Database.Implement
                 }
             }
         }
-        public List<OsnvViewModel> Read(OsnvBindingModel model)
+        public List<BankViewModel> Read(BankBindingModel model)
         {
             using (var context = new Database())
             {
-                return context.Osnvs
+                return context.Banks
                 .Where(rec => model == null || rec.Id == model.Id)
-                .Select(rec => new OsnvViewModel
+                .Select(rec => new BankViewModel
                 {
                     Id = rec.Id,
                     Name = rec.Name,

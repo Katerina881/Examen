@@ -1,4 +1,5 @@
 ﻿using Logic.BindingModel;
+using Logic.BuisnessLogic;
 using Logic.Interface;
 using System;
 using System.Collections.Generic;
@@ -13,20 +14,23 @@ using Unity;
 
 namespace View
 {
-    public partial class FormDops : Form
+    public partial class FormBanks : Form
     {
         [Dependency]
         public new IUnityContainer Container { get; set; }
 
-        private readonly IDop Dop;
+        private readonly IBank Bank;
 
-        public FormDops(IDop Dop)
+        private readonly BackUpAbstractLogic backUpAbstractLogic;
+
+        public FormBanks(IBank Bank, BackUpAbstractLogic backUpAbstractLogic)
         {
             InitializeComponent();
-            this.Dop = Dop;
+            this.Bank = Bank;
+            this.backUpAbstractLogic = backUpAbstractLogic;
         }
 
-        private void FormDops_Load(object sender, EventArgs e)
+        private void FormBanks_Load(object sender, EventArgs e)
         {
             LoadData();
         }
@@ -35,12 +39,11 @@ namespace View
         {
             try
             {
-                var list = Dop.Read(null);
+                var list = Bank.Read(null);
                 if (list != null)
                 {
-                    dataGridView1.DataSource = list;
-                    dataGridView1.Columns[0].Visible = false;
-                    dataGridView1.Columns[1].Visible = false;
+                    dataGridView.DataSource = list;
+                    dataGridView.Columns[0].Visible = false;
                 }
             }
             catch (Exception ex)
@@ -51,7 +54,7 @@ namespace View
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-            var form = Container.Resolve<FormDop>();
+            var form = Container.Resolve<FormBank>();
             if (form.ShowDialog() == DialogResult.OK)
             {
                 LoadData();
@@ -60,10 +63,10 @@ namespace View
 
         private void buttonCh_Click(object sender, EventArgs e)
         {
-            if (dataGridView1.SelectedRows.Count == 1)
+            if (dataGridView.SelectedRows.Count == 1)
             {
-                var form = Container.Resolve<FormDop>();
-                form.Id = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value);
+                var form = Container.Resolve<FormBank>();
+                form.Id = Convert.ToInt32(dataGridView.SelectedRows[0].Cells[0].Value);
                 if (form.ShowDialog() == DialogResult.OK)
                 {
                     LoadData();
@@ -73,14 +76,14 @@ namespace View
 
         private void buttonDel_Click(object sender, EventArgs e)
         {
-            if (dataGridView1.SelectedRows.Count == 1)
+            if (dataGridView.SelectedRows.Count == 1)
             {
                 if (MessageBox.Show("Удалить запись", "Вопрос", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    int id = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value);
+                    int id = Convert.ToInt32(dataGridView.SelectedRows[0].Cells[0].Value);
                     try
                     {
-                        Dop.Delete(new DopBindingModel { Id = id });
+                        Bank.Delete(new BankBindingModel { Id = id });
                     }
                     catch (Exception ex)
                     {
@@ -98,8 +101,34 @@ namespace View
 
         private void продуктыToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var form = Container.Resolve<FormDops>();
+            var form = Container.Resolve<FormVklads>();
             form.ShowDialog();
+        }
+
+        private void отчетыToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = Container.Resolve<FormReport>();
+            form.ShowDialog();
+        }
+
+        private void сохранитьФайлToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (backUpAbstractLogic != null)
+                {
+                    var fbd = new FolderBrowserDialog();
+                    if (fbd.ShowDialog() == DialogResult.OK)
+                    {
+                        backUpAbstractLogic.CreateArchive(fbd.SelectedPath);
+                        MessageBox.Show("Файл сохранен", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

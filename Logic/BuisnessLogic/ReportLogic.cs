@@ -11,39 +11,38 @@ namespace Logic.BuisnessLogic
 {
     public class ReportLogic
     {
-        private readonly IOsnv Osnv;
-        private readonly IDop Dop;
-        public ReportLogic(IOsnv Osnv, IDop Dop)
+        private readonly IBank Bank;
+        private readonly IVklad Vklad;
+        public ReportLogic(IBank Bank, IVklad Vklad)
         {
-            this.Osnv = Osnv;
-            this.Dop = Dop;
+            this.Bank = Bank;
+            this.Vklad = Vklad;
         }
-        public List<DopViewModel> GetDops(ReportBindingModel model)
+        public List<VkladViewModel> GetVklads(ReportBindingModel model)
         {
-            var Dops = Dop.Read(new DopBindingModel
+            var Vklads = Vklad.Read(new VkladBindingModel
             {
                 DateFrom = model.DateFrom,
                 DateTo = model.DateTo
             });
-            var list = new List<DopViewModel>();
-            foreach (var rec in Dops)
+            var list = new List<VkladViewModel>();
+            foreach (var rec in Vklads)
             {
-                var record = new DopViewModel
+                var record = new VkladViewModel
                 {
-                    DopName = rec.DopName,
+                    VkladName = rec.VkladName,
                     Name = rec.Name,
-                    DataCreateDop = rec.DataCreateDop,
-                    Place = rec.Place,
+                    DataCreateVklad = rec.DataCreateVklad,
+                    TypeVal = rec.TypeVal,
                     DateCreate = rec.DateCreate
                 };
                 list.Add(record);
             }
             return list;
         }
-        public async void SaveDopsToPdfFile(ReportBindingModel model)
+        public async void SaveVkladsToPdfFile(ReportBindingModel model)
         {
-            //названия
-            string title = "Блюда и их продукты";
+            string title = "Вклады банков за период";
 
             await Task.Run(() =>
             {
@@ -51,7 +50,7 @@ namespace Logic.BuisnessLogic
                 {
                     FileName = model.FileName,
                     Title = title,
-                    Dops = GetDops(model),
+                    Vklads = GetVklads(model),
                 });
             });
         }

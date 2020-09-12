@@ -8,8 +8,8 @@ namespace Logic.ViewModel
     {
         public string Name { get; set; }
         public DateTime DateCreate { get; set; }
-        public string DopName { get; set; }
-        public string Place { get; set; }
-        public DateTime DataCreateDop { get; set; }
+        public string VkladName { get; set; }
+        public string TypeVal { get; set; }
+        public DateTime DataCreateVklad { get; set; }
     }
 }

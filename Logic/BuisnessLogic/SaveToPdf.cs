@@ -31,11 +31,11 @@ namespace Logic.BuisnessLogic
             {
                 Table = table,
                 //названия
-                Texts = new List<string> { "Блюдо", "Дата приготовления", "Продукт", "Дата завоза", "Место производства" },
+                Texts = new List<string> { "Банк", "Дата создания банка", "Владелец вклада", "Тип валюты", "Дата открытия вклада" },
                 Style = "NormalTitle",
                 ParagraphAlignment = ParagraphAlignment.Center
             });
-            foreach (var cl in info.Dops)
+            foreach (var cl in info.Vklads)
             {
                 CreateRow(new PdfRowParameters
                 {
@@ -44,9 +44,9 @@ namespace Logic.BuisnessLogic
                     {
                         cl.Name,
                         cl.DateCreate.ToString(),
-                        cl.DopName,
-                        cl.DataCreateDop.ToString(),
-                        cl.Place
+                        cl.VkladName,
+                        cl.TypeVal,
+                        cl.DataCreateVklad.ToString()                        
                     },
                     Style = "Normal",
                     ParagraphAlignment = ParagraphAlignment.Left

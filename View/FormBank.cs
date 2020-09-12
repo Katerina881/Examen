@@ -14,30 +14,30 @@ using Unity;
 
 namespace View
 {
-    public partial class FormOsnv : Form
+    public partial class FormBank : Form
     {
         [Dependency]
         public new IUnityContainer Container { get; set; }
 
         public int Id { set { id = value; } }
 
-        private readonly IOsnv Osnv;
+        private readonly IBank Bank;
 
         private int? id;
 
-        public FormOsnv(IOsnv Osnv)
+        public FormBank(IBank Bank)
         {
             InitializeComponent();
-            this.Osnv = Osnv;
+            this.Bank = Bank;
         }
 
-        private void FormOsnv_Load(object sender, EventArgs e)
+        private void FormBank_Load(object sender, EventArgs e)
         {
             if (id.HasValue)
             {
                 try
                 {
-                    var view = Osnv.Read(new OsnvBindingModel { Id = id })?[0];
+                    var view = Bank.Read(new BankBindingModel { Id = id })?[0];
                     if (view != null)
                     {
                         textBoxTitle.Text = view.Name;
@@ -85,7 +85,7 @@ namespace View
             }
             try
             {
-                Osnv.CreateOrUpdate(new OsnvBindingModel
+                Bank.CreateOrUpdate(new BankBindingModel
                 {
                     Id = id,
                     Name = textBoxTitle.Text,

@@ -35,7 +35,7 @@ namespace View
             {
                 ReportParameter parameter = new ReportParameter("ReportParameter1", " c " + dateTimePickerFrom.Value.ToShortDateString() + " по " + dateTimePickerTo.Value.ToShortDateString());
                 reportViewer.LocalReport.SetParameters(parameter);
-                var dataSource = logic.GetDops(new ReportBindingModel { DateFrom = dateTimePickerFrom.Value.Date, DateTo = dateTimePickerTo.Value.Date });
+                var dataSource = logic.GetVklads(new ReportBindingModel { DateFrom = dateTimePickerFrom.Value.Date, DateTo = dateTimePickerTo.Value.Date });
                 ReportDataSource source = new ReportDataSource("DataSet1", dataSource);
                 reportViewer.LocalReport.DataSources.Add(source);
                 reportViewer.RefreshReport();
@@ -60,7 +60,7 @@ namespace View
                 {
                     try
                     {
-                        logic.SaveDopsToPdfFile(new ReportBindingModel
+                        logic.SaveVkladsToPdfFile(new ReportBindingModel
                         {
                             FileName = dialog.FileName,
                             DateFrom = dateTimePickerFrom.Value.Date,

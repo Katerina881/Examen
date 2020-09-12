@@ -14,29 +14,29 @@ using Unity;
 
 namespace View
 {
-    public partial class FormDop : Form
+    public partial class FormVklad : Form
     {
         [Dependency]
         public new IUnityContainer Container { get; set; }
 
         public int Id { set { id = value; } }
 
-        private readonly IDop Dop;
+        private readonly IVklad Vklad;
 
-        private readonly IOsnv Osnv;
+        private readonly IBank Bank;
 
         private int? id;
 
-        public FormDop(IDop service, IOsnv OsnvService)
+        public FormVklad(IVklad service, IBank BankService)
         {
             InitializeComponent();
-            this.Dop = service;
-            this.Osnv = OsnvService;
+            this.Vklad = service;
+            this.Bank = BankService;
         }
 
-        private void FormDop_Load(object sender, EventArgs e)
+        private void FormVklad_Load(object sender, EventArgs e)
         {
-            var list = Osnv.Read(null);
+            var list = Bank.Read(null);
             if (list != null)
             {
                 comboBox1.DataSource = list;
@@ -49,13 +49,13 @@ namespace View
                 try
                 {
 
-                    var view = Dop.Read(new DopBindingModel { Id = id })?[0];
+                    var view = Vklad.Read(new VkladBindingModel { Id = id })?[0];
                     if (view != null)
                     {
                         textBoxFullName.Text = view.Name;
-                        textBoxCount.Text = view.Count.ToString();
-                        dateTimePicker1.Value = view.DataCreateDop;
-                        textBoxJob.Text = view.Place;
+                        textBoxCount.Text = view.Sum.ToString();
+                        dateTimePicker1.Value = view.DataCreateVklad;
+                        textBoxJob.Text = view.TypeVal;
 
                     }
                 }
@@ -82,7 +82,7 @@ namespace View
             if (comboBox1.SelectedValue == null)
             {
                 
-                MessageBox.Show("Выберите блюдо", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Выберите банк", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -105,14 +105,14 @@ namespace View
             }
             try
             {
-                Dop.CreateOrUpdate(new DopBindingModel
+                Vklad.CreateOrUpdate(new VkladBindingModel
                 {
                     Id = id,
-                    DopName = textBoxFullName.Text,
-                    Count = Convert.ToInt32(textBoxCount.Text),
-                    Place = textBoxJob.Text,
-                    DataCreateDop = dateTimePicker1.Value,
-                    OsnvId = Convert.ToInt32(comboBox1.SelectedValue)
+                    VkladName = textBoxFullName.Text,
+                    Sum = Convert.ToInt32(textBoxCount.Text),
+                    TypeVal = textBoxJob.Text,
+                    DataCreateVklad = dateTimePicker1.Value,
+                    BankId = Convert.ToInt32(comboBox1.SelectedValue)
                 });
                 MessageBox.Show("Сохранение прошло успешно", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 DialogResult = DialogResult.OK;

@@ -208,29 +208,29 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FormDop.cs">
+    <Compile Include="FormVklad.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormDop.Designer.cs">
-      <DependentUpon>FormDop.cs</DependentUpon>
+    <Compile Include="FormVklad.Designer.cs">
+      <DependentUpon>FormVklad.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormDops.cs">
+    <Compile Include="FormVklads.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormDops.Designer.cs">
-      <DependentUpon>FormDops.cs</DependentUpon>
+    <Compile Include="FormVklads.Designer.cs">
+      <DependentUpon>FormVklads.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormOsn.cs">
+    <Compile Include="FormBank.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormOsn.Designer.cs">
-      <DependentUpon>FormOsn.cs</DependentUpon>
+    <Compile Include="FormBank.Designer.cs">
+      <DependentUpon>FormBank.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormOsns.cs">
+    <Compile Include="FormBanks.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormOsns.Designer.cs">
-      <DependentUpon>FormOsns.cs</DependentUpon>
+    <Compile Include="FormBanks.Designer.cs">
+      <DependentUpon>FormBanks.cs</DependentUpon>
     </Compile>
     <Compile Include="FormReport.cs">
       <SubType>Form</SubType>
@@ -241,17 +241,17 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SqlServerTypes\Loader.cs" />
-    <EmbeddedResource Include="FormDop.resx">
-      <DependentUpon>FormDop.cs</DependentUpon>
+    <EmbeddedResource Include="FormVklad.resx">
+      <DependentUpon>FormVklad.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormDops.resx">
-      <DependentUpon>FormDops.cs</DependentUpon>
+    <EmbeddedResource Include="FormVklads.resx">
+      <DependentUpon>FormVklads.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormOsn.resx">
-      <DependentUpon>FormOsn.cs</DependentUpon>
+    <EmbeddedResource Include="FormBank.resx">
+      <DependentUpon>FormBank.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormOsns.resx">
-      <DependentUpon>FormOsns.cs</DependentUpon>
+    <EmbeddedResource Include="FormBanks.resx">
+      <DependentUpon>FormBanks.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormReport.resx">
       <DependentUpon>FormReport.cs</DependentUpon>

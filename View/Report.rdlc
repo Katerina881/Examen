@@ -17,16 +17,16 @@
         <CommandText>/* Local Query */</CommandText>
       </Query>
       <Fields>
-        <Field Name="DataCreateDop">
-          <DataField>DataCreateDop</DataField>
+        <Field Name="DataCreateVklad">
+          <DataField>DataCreateVklad</DataField>
           <rd:TypeName>System.DateTime</rd:TypeName>
         </Field>
         <Field Name="DateCreate">
           <DataField>DateCreate</DataField>
           <rd:TypeName>System.DateTime</rd:TypeName>
         </Field>
-        <Field Name="DopName">
-          <DataField>DopName</DataField>
+        <Field Name="VkladName">
+          <DataField>VkladName</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="Name">

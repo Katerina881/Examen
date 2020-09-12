@@ -6,25 +6,25 @@ using System.Text;
 namespace Logic.BindingModel
 {
     [DataContract]
-    public class DopBindingModel
+    public class VkladBindingModel
     {
         [DataMember]
         public int? Id { get; set; }
 
         [DataMember]
-        public int OsnvId { get; set; }
+        public int BankId { get; set; }
 
         [DataMember]
-        public string DopName { get; set; }
+        public string VkladName { get; set; }
 
         [DataMember]
-        public int Count { get; set; }
+        public int Sum { get; set; }
 
         [DataMember]
-        public DateTime DataCreateDop { get; set; }
+        public DateTime DataCreateVklad { get; set; }
 
         [DataMember]
-        public string Place { get; set; }
+        public string TypeVal { get; set; }
 
         [DataMember]
         public DateTime? DateFrom { get; set; }
