@@ -34,14 +34,15 @@ namespace Logic.BuisnessLogic
 
                 var dbsets = GetFullList();
 
-                MethodInfo method = GetType().BaseType.GetTypeInfo().GetDeclaredMethod("SaveToFile");
+                //MethodInfo method = GetType().BaseType.GetTypeInfo().GetDeclaredMethod("SaveToFile");
 
                 foreach (var set in dbsets)
                 {
                     var elem =
                     assem.CreateInstance(set.PropertyType.GenericTypeArguments[0].FullName);
-                    MethodInfo generic = method.MakeGenericMethod(elem.GetType());
-                    generic.Invoke(this, new object[] { folderName });
+                    //MethodInfo generic = method.MakeGenericMethod(elem.GetType());
+                    //generic.Invoke(this, new object[] { folderName });
+                    elem.GetType().InvokeMember("SaveToFile", BindingFlags.InvokeMethod | BindingFlags.Public, null, null, new object[] {folderName});
                 }
             }
             catch (Exception)
